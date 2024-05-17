@@ -6,7 +6,7 @@
     Windows Terminal recommended. https://apps.microsoft.com/detail/9n0dx20hk701?activetab=pivot%3Aoverviewtab&hl=en-us&gl=US
     PS> winget install --id Microsoft.Powershell --source winget
     PS> Install-Module -Name ExchangeOnlineManagement -RequiredVersion 3.4.0
-.PARAMETER UserPrincipal
+.PARAMETER UserPrincipalName
     privilegeduser@exampletenant.com - privileged account used to login with modern auth and fetch rules.
 .PARAMETER OutFile
     /path/to/output/file.csv - if not specified ./all_mailbox_rules.csv
