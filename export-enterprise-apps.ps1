@@ -2,7 +2,7 @@
 # Import-Module Microsoft.Graph.PowerShell
 
 # Connect to MS Graph with Appropriate Scopes
-# Connect-MgGraph -NoWelcome -Scopes "Application.Read.All"
+Connect-MgGraph -NoWelcome -Scopes "Application.Read.All"
 
 # Specify the enterprise app IDs you want to export
 $all_enterprise_apps = Get-MgServicePrincipal | select -Property Id
@@ -11,14 +11,16 @@ $all_enterprise_apps = Get-MgServicePrincipal | select -Property Id
 $results = @()
 
 foreach ($Id in $all_enterprise_apps) {
-    $app = Get-MgServicePrincipal -ServicePrincipalId $Id.Id
-    $users = Get-MgServicePrincipalAppRoleAssignedTo -ServicePrincipalId $Id.Id -all
+    $app1 = Get-MgServicePrincipal -ServicePrincipalId $Id.Id
+    $app2 = Get-MgServicePrincipalAppRoleAssignedTo -ServicePrincipalId $Id.Id -all
 
     # Extract relevant information (customize as needed)
     $appInfo = @{
-        AppName = $app.DisplayName
-        Owners = $app.Owners -join ", "
-        Users = $users -join ", "
+        AppName = $app1.DisplayName -join ", "
+        Id = $app1.Id -join ", "
+        AppId = $app1.AppId -join ", "
+        CreatedDateTime = $app2.CreatedDateTime -join ", "
+        Users = $app2.PrincipalDisplayName -join ", "
     }
 
     $results += New-Object PSObject -Property $appInfo
