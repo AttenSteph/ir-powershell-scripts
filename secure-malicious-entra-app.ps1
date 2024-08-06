@@ -19,8 +19,8 @@
     Author: Stephanie Sherwood
 #>
 param(
-    # [Parameter(Mandatory=$true)]
-    # [String]$AppID,
+    [Parameter(Mandatory=$true)]
+    [String]$AppID,
     [Parameter(Mandatory=$true)]
     [String]$ObjectID
 )
@@ -84,20 +84,29 @@ $tags = $sp.tags
 $tags += "HideApp"
 Update-MgServicePrincipal -ServicePrincipalID  $objectId -Tags $tags
 
-Write-Host "done"
-
 # Write out some details for incident report
-# Get-MgApplication -ApplicationId $AppID | Select-Object appDisplayName, DisplayName, Id, alternativeNames | fl
-# Get-MgApplication -InputObject $AppID | 
-#   Format-List Id, DisplayName, AppId, SignInAudience, PublisherDomain
-
-# Write-Host "Script complete. Copy the text below to your report."
-# Write-Host "------SNIP------"
-# Write-Host "App Display Name: $ObjectID.appDisplayName"
-# Write-Host "Display Name:  $ObjectID.DisplayName"
-# Write-Host "Object ID: $ObjectID.Id"
-# Write-Host "Alternative Names: $ObjectID.AlternativeNames"
-# Write-Host "------SNIP------"
-
-# Get-MgApplication -Filter "AppId eq $AppID" | 
-#   Format-List Id, DisplayName, AppId, SignInAudience, PublisherDomain
+Write-Host "------SNIP------"
+Write-Host "Disabled and secured following Entra Enterprise Application on confirmation/suspicion of it being a malicious application:"
+Get-MgApplication -Filter "AppId eq '$appId'" | 
+  Format-List Id, DisplayName, AppId, SignInAudience, PublisherDomain
+Write-Host "------SNIP------"
+Write-Host "Copy the above text to your report, and remove the application registration created by MS Graph Beta Powershell SDK when finished!"
+Write-Host "Have a sammich"
+Write-Host "                     .---._"
+Write-Host "                _.-~       ~-._"
+Write-Host "            _.-~               ~-._"
+Write-Host "        _.-~                       ~---._"
+Write-Host "    _.-~                                 ~\"
+Write-Host " .-~                                    _.;"
+Write-Host " :-._                               _.-~ ./"
+Write-Host " `-._~-._                   _..__.-~ _.-~"
+Write-Host "  /  ~-._~-._              / .__..--~----._"
+Write-Host " \_____(_;-._\.        _.-~_/       ~).. . \"
+Write-Host "    /(_____  \`--...--~_.-~______..-+_______)"
+Write-Host "  .(_________/`--...--~/    _/nad        /\"
+Write-Host " /-._     \_     (___./_..-~__.....__..-~./"
+Write-Host " `-._~-._   ~\--------~  .-~_..__.-~ _.-~"
+Write-Host "     ~-._~-._ ~---------'  / .__..--~"
+Write-Host "         ~-._\.        _.-~_/"
+Write-Host "             \`--...--~_.-~"
+Write-Host "              `--...--~"

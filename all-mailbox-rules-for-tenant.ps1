@@ -9,7 +9,7 @@
 .PARAMETER UserPrincipalName
     privilegeduser@exampletenant.com - privileged account used to login with modern auth and fetch rules.
 .PARAMETER OutFile
-    /path/to/output/file.csv - if not specified ./all_mailbox_rules.csv
+    \path\to\output\file.csv - if not specified .\all_mailbox_rules.csv
 .EXAMPLE
     C:\PS> all-mailbox-rules-for-tenant.ps1 -UserPrincipalName privilegeduser@exampletenant.com -OutFile .\mailbox-rules.csv
 .NOTES
