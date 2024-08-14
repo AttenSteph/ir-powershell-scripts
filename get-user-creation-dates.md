@@ -11,14 +11,17 @@ get-user-creation-dates.ps1
 ```
 
 ## Install
-Requries AzureAD  
-[Windows Terminal recommended](https://apps.microsoft.com/detail/9n0dx20hk701?activetab=pivot%3Aoverviewtab&)
+- Trust winget repo.
+- [Install Windows Terminal (Recommended, but not necessary)](https://apps.microsoft.com/detail/9n0dx20hk701?activetab=pivot%3Aoverviewtab&hl=en-us&gl=US).
+- Install Powershell 7.4+
+- Install required Powershell modules (AzureAD).
 
 ```powershell
+Set-PackageSource -Name winget -Trusted
+winget install --id Microsoft.WindowsTerminal --source winget
 winget install --id Microsoft.Powershell --source winget
-Install-Module -Name AzureAD
+Install-Module AzureAD -Scope AllUsers -Confirm:$False -Force
 ```
-
 ## Get-Help Usge
 To see the examples, type:  
 ```powershell
