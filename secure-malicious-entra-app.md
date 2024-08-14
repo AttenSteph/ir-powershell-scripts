@@ -11,15 +11,21 @@ secure-malicious-entra-app.ps1 -AppID <String> -ObjectID <String>
 
 ## Install & Usage Notes
 
-**NOTE: MS Graph Beta Powershell SDK will register itself as a new enterprise app for the tenant. REMOVE THIS APP REGISTRATION WHEN YOU ARE DONE!**
-
-Requries Powershell 7.4+, AzureAD, and MS Graph Beta. [Windows Terminal recommended](https://apps.microsoft.com/detail/9n0dx20hk701?activetab=pivot%3Aoverviewtab&hl=en-us&gl=US). 
+- Trust winget repo.
+- [Install Windows Terminal (Recommended, but not necessary)](https://apps.microsoft.com/detail/9n0dx20hk701?activetab=pivot%3Aoverviewtab&hl=en-us&gl=US).
+- Install Powershell 7.4+
+- Install required Powershell modules (AzureAD, MS (Graph, & MS Graph Beta)[https://learn.microsoft.com/en-us/powershell/microsoftgraph/installation?view=graph-powershell-1.0]).
 
 ```powershell
+Set-PackageSource -Name winget -Trusted
+winget install --id Microsoft.WindowsTerminal --source winget
 winget install --id Microsoft.Powershell --source winget
-Install-Module AzureAD
-Install-Module Microsoft.Graph.Beta
+Install-Module AzureAD -Scope AllUsers -Confirm:$False -Force
+Install-Module Microsoft.Graph -Scope AllUsers -Confirm:$False -Force
+Install-Module Microsoft.Graph.Beta -Scope AllUsers -Confirm:$False -Force
 ```
+**NOTE: MS Graph Beta Powershell SDK will register itself as a new enterprise app for the tenant. REMOVE THIS APP REGISTRATION WHEN YOU ARE DONE!**
+
 
 
 ## Get-Help Usge
