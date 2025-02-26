@@ -25,11 +25,14 @@ Connect-ExchangeOnline -UserPrincipalName $UserPrincipalName
 
 get-mailbox -resultsize unlimited  |
 ForEach-Object {
-    Write-Verbose "Checking $($_.alias)..." -Verbose
-    $inboxrule = get-inboxrule -Mailbox $_.alias -includeHidden
+    Write-Verbose "Checking $($_.guid)..." -Verbose
+    $inboxrule = get-inboxrule -Mailbox $_.guid -includeHidden
     if ($inboxrule) {
         foreach($rule in $inboxrule){
         [PSCustomObject]@{
+            UPN             = $_.UserPrincipalName
+            DisplayName     = $_.DisplayName
+            EmailAddresses  = $_.EmailAddresses
             Mailbox         = $_.alias
             Rulename        = $rule.name
             Identity        = $rule.identity
