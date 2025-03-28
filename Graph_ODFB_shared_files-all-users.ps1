@@ -291,9 +291,6 @@ if (!$GraphUsers) { throw "No users found, aborting..." }
 $Output = @()
 $count = 1; $PercentComplete = 0;
 
-# ssherwood - single user "fix"
-$GraphUsers = $GraphUsers.Where({ $_.userPrincipalName -eq "jillian@gourmondoco.com"})
-
 foreach ($user in $GraphUsers) {
     #Progress message
     $ActivityMessage = "Retrieving data for user $($user.displayName). Please wait..."
