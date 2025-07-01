@@ -1,4 +1,4 @@
-# Get-M365ServicePrincipalInfo
+# get-service-principal-info
 
 PowerShell script to retrieve details about a Microsoft 365 / Azure AD service principal. Uses Microsoft Graph with **Application.Read.All** delegated scope—no admin consent required in most tenants.
 
@@ -36,7 +36,3 @@ Returns a custom object (or JSON if `-OutputJson`) with fields including:
 - `WellKnownAppId` (bool)
 - `WellKnownAppName` (if matched)
 - `Reference` (if matched)
-
----
-
-## License
