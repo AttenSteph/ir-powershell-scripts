@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Retrieves detailed information about an Azure AD / Microsoft 365 service principal with least‑privilege delegated permissions.
+    Retrieves detailed information about an Azure AD / Microsoft 365 service principal
 
 .DESCRIPTION
     * Connects to Microsoft Graph using **Application.Read.All** (delegated) – usually pre‑consented for Microsoft Graph CLI/PowerShell.
@@ -27,10 +27,10 @@
     Force re‑download of the well‑known AppId CSV, bypassing the cache.
 
 .EXAMPLE
-    .\Get-M365ServicePrincipalInfo.ps1 -Search "Azure DevOps"
+    .\get-service-principal-info.ps1 -Search "Azure DevOps"
 
 .EXAMPLE
-    .\Get-M365ServicePrincipalInfo.ps1 -Search "<appId>" -OutputJson -ForceRefresh | Out‑File sp.json
+    .\get-service-principal-info.ps1 -Search "<appId>" -OutputJson -ForceRefresh | Out‑File sp.json
 
 .NOTES
     * For app‑role assignment details, reconnect with:
